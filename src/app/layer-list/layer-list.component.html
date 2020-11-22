@@ -1,0 +1,47 @@
+<app-alert *ngIf="pageError" [message]="pageError" (close)="onClose()"></app-alert>
+<app-spinner *ngIf="isLoading"></app-spinner>
+<div class="row">
+  <div class="col-sm-8">
+    <button (click)="onNewLayerAdded()" class="btn btn-success">
+      New Layer
+    </button>
+  </div>
+  <app-layer-creation
+    *ngIf="showForm"
+    [layer]="layer"
+    (close)="closeForm()"
+    (layerAdded)="onLayerAdded($event)"
+  ></app-layer-creation>
+</div>
+<hr />
+<div class="row">
+  <div
+    class="col-md-{{ editMode ? 4 : 12 }} col-sm-12"
+    *ngIf="layers.length; else noData"
+  >
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let layerEl of layers; let i = index">
+        <!-- (click)="selectLayer(i)" -->
+        <!-- class="list-group-item {{ selectedIndex === i ? "active" : "" }}" -->
+        <app-layer-item
+          [layer]="layerEl"
+          [index]="i"
+          (edit)="setEditMode()"
+          (layerEdited)="onLayerEdited($event)"
+          (deleteLayer)="onLayerDeleted($event)"
+        ></app-layer-item>
+      </li>
+    </ul>
+  </div>
+  <ng-template #noData>
+    <div class="col-lg-6 col-md-6 mx-auto my-2">
+      <p class="text-center font-italic">
+        No layers found
+      </p>
+    </div>
+  </ng-template>
+  <div class="col-md-8 col-sm-12">
+    <!-- <app-layer-edit *ngIf="editMode" (closeEdit)="closeForm()"></app-layer-edit> -->
+    <router-outlet *ngIf="editMode"></router-outlet>
+  </div>
+</div>

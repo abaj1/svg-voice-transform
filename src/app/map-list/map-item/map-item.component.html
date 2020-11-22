@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-12">
+    <!-- <div class="row"> -->
+      <div class="col-md-6">
+        <h4>{{ index + 1 }}. {{ map.name.substring(0, map.name.length - 4) }}</h4>
+        <!-- <div class="img-thumbnail thumb" #thumb></div> -->
+      </div>
+      <div class="">
+        <!-- change button to a and href to edit -->
+        <a routerLink="/map/{{ map.id }}" class="btn btn-warning mx-1 my-1">
+          <!-- (click)="selectMap()" -->
+          Select
+        </a>
+        <!-- <button class="btn btn-warning mx-2 my-2" (click)="selectMap()">
+          Select
+        </button> -->
+        <!-- change button to a and href to delete -->
+        <button class="btn btn-danger" (click)="deleteMap()">
+          Delete
+        </button>
+      </div>
+    <!-- </div> -->
+  </div>
+</div>

@@ -1,0 +1,40 @@
+<div class="d-flex justify-content-between align-items-center">
+  <div>
+    <h4>Layer name: {{ layer.name }}</h4>
+    <!-- <img
+        [src]="layer.icon"
+        alt="{{ layer.name }}"
+        class="img-responsive"
+        style="max-height: 50px;"
+      /> -->
+    <div class="custom-control custom-checkbox" *ngIf="layer.status">
+      <input
+        type="checkbox"
+        class="custom-control-input"
+        id="status"
+        name="status"
+        checked
+        disabled
+      />
+      <label class="custom-control-label" for="status">Active</label>
+    </div>
+    <div class="custom-control custom-checkbox" *ngIf="!layer.status">
+      <input
+        type="checkbox"
+        class="custom-control-input"
+        id="status"
+        name="status"
+        disabled
+      />
+      <label class="custom-control-label" for="status">Active</label>
+    </div>
+  </div>
+  <div>
+    <button class="btn btn-warning mx-2 my-2" (click)="onEditLayer()">
+      Edit
+    </button>
+    <!-- <button class="btn btn-danger" (click)="onDeleteLayer()">
+      Delete
+    </button> -->
+  </div>
+</div>

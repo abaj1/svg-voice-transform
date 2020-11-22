@@ -1,0 +1,13 @@
+.svg {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 1%;
+  /* pointer-events: none; */
+  /* pointer-events: visibleStroke; */
+  /* pointer-events: fill; */
+  /* pointer-events: all; */
+}
+.svg > * {
+  pointer-events: fill;
+}

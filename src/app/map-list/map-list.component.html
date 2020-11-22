@@ -1,0 +1,36 @@
+<!-- <router-outlet *ngIf="mapVisible"></router-outlet> -->
+<!-- <div class="row" *ngIf="listVisible"> -->
+<app-alert
+  (close)="onClose()"
+  *ngIf="pageError"
+  [message]="pageError"
+></app-alert>
+<app-spinner *ngIf="isLoading; else noData"></app-spinner>
+<ng-template #noData>
+  <div class="row">
+    <div class="col-lg-12">
+      <h4 class="text-center">List of your maps</h4>
+    </div>
+    <div class="col-lg-12">
+      <app-map-item
+        *ngFor="let map of maps; let i = index"
+        [map]="map"
+        [index]="i"
+        (mapSelected)="onMapWasSelected()"
+        (mapDeleted)="onMapWasDeleted($event)"
+      ></app-map-item>
+    </div>
+    <div class="col-lg-6 col-md-6 mx-auto my-2" *ngIf="mapListError">
+      <p class="text-center font-italic">
+        No maps found
+      </p>
+    </div>
+    <!-- <ng-template #noData>
+    <div class="col-lg-6 col-md-6 mx-auto my-2">
+      <p class="text-center font-italic">
+        No maps found
+      </p>
+    </div>
+  </ng-template> -->
+  </div>
+</ng-template>

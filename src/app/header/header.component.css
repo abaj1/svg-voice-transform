@@ -1,0 +1,28 @@
+.map-toolbar {
+  display: flex;
+  list-style: none;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  background: #ccc;
+  padding: 0;
+  margin: 0;
+  position: absolute;
+  height: 75vh;
+  top: 0;
+}
+.map-toolbar > li {
+  width: 100%;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  line-height: 3em;
+}
+.map-toolbar > li:hover {
+  background: #ddd;
+  cursor: pointer;
+}
+.email {
+  display: block;
+  padding: 0.5rem 1rem;
+}

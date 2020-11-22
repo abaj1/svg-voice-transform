@@ -1,0 +1,64 @@
+<app-alert
+  (close)="onClose()"
+  *ngIf="pageError"
+  [message]="pageError"
+></app-alert>
+<div class="row my-2">
+  <div class="col-md-12 col-sm-12">
+    <h4 class="text-center">Edit Layer Form</h4>
+    <form
+      (ngSubmit)="onEdit(lForm)"
+      #lForm="ngForm"
+      enctype="multipart/form-data"
+    >
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          [ngModel]="name"
+          name="name"
+          type="text"
+          class="form-control"
+          id="name"
+          placeholder="Assing name to layer"
+          required
+          #inputName
+        />
+      </div>
+      <div class="custom-file">
+        <label class="custom-file-label" for="voice">Voice File</label>
+        <input
+          type="file"
+          class="custom-file-input"
+          name="voice"
+          id="voice"
+          accept=".mp3"
+          required
+          ngModel
+          #voice
+        />
+      </div>
+      <div>
+        <input
+          type="checkbox"
+          id="status"
+          name="status"
+          checked="{{ layer ? (layer.status ? 'checked' : '') : '' }}"
+          [ngModel]="status"
+        />
+        <label for="status">Active</label>
+      </div>
+      <div class="element-actions text-center">
+        <button
+          class="btn btn-primary mx-2"
+          [disabled]="!lForm.valid"
+          (click)="onEdit(lForm)"
+        >
+          Save
+        </button>
+        <button class="btn btn-danger" type="button" (click)="onCancel()">
+          Cancel
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

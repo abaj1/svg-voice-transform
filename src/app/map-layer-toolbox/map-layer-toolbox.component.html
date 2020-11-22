@@ -1,0 +1,19 @@
+<div class="layers position-absolute" *ngIf="mapLoaded">
+  <div class="layer-item" *ngFor="let layer of layerGroups; let i = index">
+    <button
+      class="btn btn-outline-{{ layer.isActive ? 'secondary' : 'danger' }}"
+      (click)="toggleLayer(i)"
+    >
+      <!-- (click)="toggleLayer(layer.name)" -->
+      <!-- <img
+        [src]="layer.icon"
+        class="img-fluid text-center"
+        style="max-width: 5px;max-height: 5px;"
+        [alt]="layer.name"
+      /> -->
+      <span class="text-center layer-item-ico">{{
+        layer.name.charAt(0).toUpperCase()
+      }}</span>
+    </button>
+  </div>
+</div>

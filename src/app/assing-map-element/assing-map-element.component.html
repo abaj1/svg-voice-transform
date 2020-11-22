@@ -1,0 +1,60 @@
+<div class="backdrop" (click)="onClose()"></div>
+<div class="element-window">
+  <app-alert
+    [message]="error"
+    *ngIf="error"
+    (close)="onHandleError()"
+  ></app-alert>
+  <form (ngSubmit)="onSave()" #f="ngForm">
+    <div class="form-group text-center">
+      <label
+        >Selected element: <{{ element.tagName }}> id: {{ element.id }}</label
+      >
+    </div>
+    <div class="form-group">
+      <label for="layer">Layer</label>
+      <select
+        #select
+        class="custom-select"
+        [ngModel]="selectedLayerName"
+        name="layer"
+        required
+      >
+        <option value="-1">--Remove Layer--</option>
+        <option
+          *ngFor="let layer of layers; let i = index"
+          value="{{ layer.name }}"
+          >{{ layer.name }}</option
+        >
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        [ngModel]="name"
+        name="name"
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Assing name to element"
+        required
+      />
+    </div>
+    <div class="form-group">
+      <label for="desc">Description</label>
+      <textarea
+        [ngModel]="desc"
+        name="desc"
+        class="form-control"
+        id="desc"
+        rows="3"
+      ></textarea>
+    </div>
+    <div class="element-actions">
+      <button class="btn btn-primary mx-2" [disabled]="!f.valid" type="submit">
+        Save
+      </button>
+      <button class="btn btn-danger" (click)="onClose()">Close</button>
+    </div>
+  </form>
+</div>

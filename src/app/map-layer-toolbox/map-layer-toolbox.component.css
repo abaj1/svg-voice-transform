@@ -1,0 +1,19 @@
+.layers {
+  right: 2%;
+  top: 0;
+  width: 10%;
+  box-sizing: border-box;
+  padding: 1%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.layer-item {
+  flex: 1;
+  text-align: center;
+  margin: 2px 0;
+}
+.layer-item-ico {
+  box-sizing: border-box;
+  display: block;
+}

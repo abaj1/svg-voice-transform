@@ -1,0 +1,61 @@
+<app-alert
+  (close)="onClose()"
+  *ngIf="pageError"
+  [message]="pageError"
+></app-alert>
+<div class="backdrop" (click)="onClose()"></div>
+<div class="element-window">
+  <form
+  (ngSubmit)="onSave(lForm)"
+  #lForm="ngForm"
+  enctype="multipart/form-data"
+  >
+    <div class="form-group">
+      <label for="name">Name</label>
+      <input
+        ngModel
+        name="name"
+        type="text"
+        class="form-control"
+        id="name"
+        placeholder="Assing name to layer"
+        required
+        #name
+      />
+    </div>
+    <div class="custom-file">
+      <label class="custom-file-label" for="voice">Voice File</label>
+      <input
+        type="file"
+        class="custom-file-input"
+        name="voice"
+        id="voice"
+        accept=".mp3"
+        required
+        ngModel
+        #voice
+      />
+    </div>
+    <div class="custom-control custom-checkbox">
+      <input
+        type="checkbox"
+        class="custom-control-input"
+        id="status"
+        name="status"
+        ngModel
+        checked
+      />
+      <label class="custom-control-label" for="status">Active</label>
+    </div>
+    <div class="element-actions">
+      <button
+        class="btn btn-primary mx-2"
+        [disabled]="!lForm.valid"
+        type="submit"
+      >
+        Save
+      </button>
+      <button class="btn btn-danger" (click)="onClose()">Close</button>
+    </div>
+  </form>
+</div>

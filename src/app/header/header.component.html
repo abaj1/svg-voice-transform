@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="col-md-12 mb-5 d-flex justify-content-between nav-tabs">
+    <ul class="nav mr-auto">
+      <li class="nav-item" routerLinkActive="active" *ngIf="!isLogged">
+        <a class="nav-link" routerLink="/auth">Authenticate</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="isLogged">
+        <a class="nav-link" routerLink="/my-maps">My maps</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="isLogged && isAdmin">
+        <a class="nav-link" routerLink="/layers">Layers</a>
+      </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="isLogged">
+        <a class="nav-link" routerLink="/upload-map">Upload new map</a>
+      </li>
+    </ul>
+    <ul class="nav p-0">
+      <li>
+        <span class="email">{{user ? user.email : ""}}</span>
+      </li>
+      <li class="nav-item" routerLinkActive="active" *ngIf="isLogged">
+        <a class="nav-link" routerLink="" (click)="onLogout()">Logout</a>
+      </li>
+    </ul>
+  </div>  
+</div>

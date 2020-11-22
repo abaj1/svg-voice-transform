@@ -1,0 +1,53 @@
+<app-alert
+  *ngIf="errorMsg"
+  [message]="errorMsg"
+  (close)="onClose()"
+></app-alert>
+<div class="row">
+  <div
+    class="col-sm-12 text-center my-1 d-flex justify-content-center align-items-center"
+  >
+    <button class="btn btn-success" (click)="saveMap()">
+      Save Map
+    </button>
+    <button
+      class="btn btn-warning mx-2"
+      (click)="exportMap(currentMap.content, currentMap.name)"
+    >
+      Export map
+    </button>
+    <button
+      class="btn btn-success"
+      (click)="changeViewMode()"
+      *ngIf="isUserHasAdmin"
+    >
+      {{ !changeMode ? "Switch to Teacher Mode" : "Switch to Student Mode" }}
+    </button>
+  </div>
+</div>
+
+<hr />
+<div class="row">
+  <!-- <div class="col-sm-2 position-relative">
+      <app-menu-tools></app-menu-tools>
+    </div> -->
+  <div class="col-sm-12 position-relative">
+    <app-map-layer-toolbox [mapLoaded]="mapLoaded"></app-map-layer-toolbox>
+    <div
+      class="svg"
+      #svgMap
+      (click)="showElementForm($event.target, changeMode)"
+      (contextmenu)="playDescription($event, $event.target)"
+      (touchstart)="showElementForm($event.target, changeMode)"
+      (mousemove)="checkifStopPlayMusic($event.target, !changeMode)"
+      (touchmove)="checkifStopPlayMusic($event.target, !changeMode)"
+      (mouseover)="!changeMode ? playVoice($event.target, changeMode) : ''"
+    ></div>
+  </div>
+
+  <app-assing-map-element
+    *ngIf="element"
+    [element]="element"
+    (close)="hideElementForm()"
+  ></app-assing-map-element>
+</div>
